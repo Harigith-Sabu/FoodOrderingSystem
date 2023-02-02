@@ -77,6 +77,12 @@ def cart_details(request,tot=0,count=0,cart_items=None):
         pass
     return render(request,'c.html',{'ci':ct_items,'t':tot,'cn':count})
 
+def c_id(request):
+    ct_id=request.session.session_key
+    if not ct_id:
+        ct_id=request.session.create()
+    return ct_id
+
 def add_cart(request, product_id):
     prod=product.objects.get(id=product_id)
     try:
@@ -115,8 +121,3 @@ def cart_delete(request,product_id):
 def pay(request,t):
     return render(request,'payment.html',{'t':t})
 
-def c_id(request):
-    ct_id=request.session.session_key
-    if not ct_id:
-        ct_id=request.session.create()
-    return ct_id
