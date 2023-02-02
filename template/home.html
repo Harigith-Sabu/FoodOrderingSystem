@@ -1,0 +1,97 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<html>
+
+<head>
+
+</head>
+
+<body id="top">
+  <div class="row0">
+    <div id="topbar" class="hoc clear">
+      <div class="fl_right">
+
+        <ul class="nospace">
+
+          <li id="searchform">
+
+            <div>
+              <form action="{% url 'search' %}" method="get">
+                <fieldset>
+                  <legend>Quick Search:</legend>
+                  <input type="text" placeholder="Enter item name to search" name="q">
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </fieldset>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Filter</button>
+      <div class="dropdown-content">
+        <a href="/">ALL</a>
+        {% for i in ct %}
+        <a href="/cat/{{i.id}}">{{i.name}}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="abcd" style="background-image:url('{% static 'images/bg1.jpg' %}');">
+
+      <div id="pageintro">
+        <article>
+
+          <h3 class="heading">QUALITY FOOD ITEMS</h3>
+          <p>Register with us and have quality food items at your door step.</p>
+      </div>
+      </article>
+    </div>
+    <div class="wrapper row3">
+      <main class="hoc container clear">
+        <section id="introblocks">
+          <ul class="nospace group btmspace-80">
+            {% for i in pro %}
+            <li class="one_third">
+              <br>
+              <figure><a class="imgover" href="/cart/{{i.id}}"><img src="{{i.img.url}}" alt="" style="height: 400;"></a>
+                <figcaption>
+                  <h1><b>{{i.name}}</b></h1><br>
+                  <p>{{i.desc|truncatewords:20}}</p>
+                </figcaption>
+              </figure>
+            </li>
+              {% endfor %}
+            
+          </ul>
+        </section>
+        <center>
+          {% if pro.has_previous %}
+              <a href="?page=1">&laquo;</a>
+              <!-- <a href="?page={{ mro.previous_page_number }}">previous</a> -->
+          {% endif %}
+
+          {% for i in pro.paginator.page_range %}
+              {% if pro.number == i %}
+              <a href="#" style="color:rgb(251, 2, 2);">{{i}}</a>
+                {% else %}
+                <a href="?page={{i}}">{{i}}</a>
+                {% endif %}
+                {% endfor %}
+
+                {% if pro.has_next %}
+                <!-- <a href="?page={{ pro.next_page_number }}">next</a> -->
+                <a href="?page={{ pro.paginator.num_pages }}"> &raquo;</a>
+            {% endif %}
+          
+        </center>
+
+        <hr class="btmspace-80">
+        <div class="clear"></div>
+      </main>
+    </div>
+</body>
+
+</html>
+{% endblock %}

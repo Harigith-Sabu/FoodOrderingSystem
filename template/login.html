@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<html>
+
+<head>
+  <style>
+    
+  </style>
+</head>
+
+<body>
+    <div class="abcd" style="background-image:url('{% static '' %}');">
+
+      <div>
+        <center>
+        <form method="post" action="{% url 'log' %}">
+            {% csrf_token %}
+            {{f1.as_p}}
+            <input type="submit">
+        </form>
+      </center>
+    </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

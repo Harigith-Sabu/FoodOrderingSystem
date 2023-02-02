@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+        <link href="{% static 'pr/fontawesome/css/all.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'pr/css/templatemo-comparto.css' %}" rel="stylesheet" />
+        <title>Comparto HTML CSS Template</title>
+        <!--
+    
+    Comparto TemplateMo
+    
+    https://templatemo.com/tm-544-comparto
+    
+    -->
+    <style>
+        #z1 { 
+            color: red;         
+              }
+        </style>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+              {% for i in p %}
+              {% if i.id == a %}
+              <br><br>
+              <section class="tm-mb-1" id="about">
+                  <div class="tm-row tm-about-row">
+                      <div class="tm-section-1-l">
+                          <img src="{{i.img.url}}" alt="About image" style="height: 400; ">
+                      </div>
+                      <article class="tm-section-1-r tm-bg-color-8">
+                          <h2 class="tm-mb-2 tm-title-color">{{i.name}}</h2>
+                          <p>Price:{{i.price}}</p><br>
+                          <p>{{i.desc}}</p><br>
+                          <p>Stock:{{i.stock}}</p><br>
+                          {% if i.stock <= 0 %}
+                          <h1 style="color:red">Sorry. No stock left</h1>
+                          {% else %}
+                          <a href="{% url 'add_cart' i.id %}" class="tm-btn tm-btn-1 tm-link-to-services">Add To Cart</a>
+                          {% endif %}
+                      </article>
+                  </div>
+              </section>
+              {% endif %}
+              {% endfor %}
+        {% else %}
+        <h1 id="z1">plesae login to order</h1>
+        {% endif %}
+    </body>
+</html>
+{% endblock %}
