@@ -30,7 +30,7 @@ def register(request):
         if f.is_valid():
             f.save()
             messages.success(request,'Your accout created successfully')
-            return render(request,'register.html',{'f':f})
+            return render(request,'home.html',response)
     f=userRegisterForm()
     return render(request,'register.html',response)
 
