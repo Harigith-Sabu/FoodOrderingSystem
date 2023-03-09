@@ -17,7 +17,7 @@ response['f']=userRegisterForm()
 
 
 def home(request):
-    pro=product.objects.all()
+    pro=product.objects.all().order_by('-id')
     paginator=Paginator(pro,4)
     page_number=request.GET.get('page')
     page_obj=paginator.get_page(page_number)
@@ -85,6 +85,7 @@ def c_id(request):
 
 def add_cart(request, product_id):
     prod=product.objects.get(id=product_id)
+    
     try:
         ct=cartlist.objects.get(cart_id=c_id(request))
     except cartlist.DoesNotExist:

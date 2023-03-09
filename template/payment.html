@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>PayPal Standard Payments Integration | Client Demo</title>
-        <style>
+        <!-- <style>
             #d1 { 
               background-color:red;
               width : 300px;
@@ -14,11 +14,24 @@
               margin-left: 550px;
               margin-top: 250px
                   }
-            </style>
+            </style> -->
       </head>
 
       <body>
-        <div id="d1">
+
+        <div style="background-image: url('{% static 'images/img2.jpg' %}');">
+
+            <center>
+
+        <div class="container-fluid">
+            <div class="row" style="top: 50%;">
+                <div class="col-md-4" style="background-color:whitesmoke ;">
+                           <h3>Total price</h3>
+                           <h4>{{t}}</h4>
+                   </div>
+                <div class="col-md-8" style="background-color: aquamarine;" >
+
+        <!-- <div id="d1"> -->
         <div id="paypal-button-container"></div>
         <!-- Sample PayPal credentials (client-id) are included -->
         <script src="https://www.paypal.com/sdk/js?client-id=AWxesuPKNOWfyuhKQXFXcZmQq272jCUy1NMobZZJkh1hHk0Lqf8DbYvTRGFVFn33hHAYA9piSNetY2P1&currency=USD&intent=capture&enable-funding=venmo" data-sdk-integration-source="integrationbuilder"></script>
@@ -74,6 +87,11 @@
               });
         </script>
         </div>
+        </div>
+        </div>
+        </center>
+        </div>
       </body>
     </html>
+    
     {% endblock %}

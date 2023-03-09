@@ -5,21 +5,49 @@
 
 <head>
   <style>
-    
+    .centerdiv{
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: red;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(27deg, #013A6B 50%, #004E95 50%);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+   }
+
+   h2{
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 2em;
+    /* word-spacing: 10px; */
+    margin-top: -50px;
+    /* margin-bottom: 50px;/ */
+    text-shadow: -2px 2px 1px #0A84C6;
+   }
   </style>
 </head>
 
 <body>
-    <div class="abcd" style="background-image:url('{% static '' %}');">
+    <div class="abcd" style="background-image:url('{% static 'images/img2.jpg' %}');">
+      <div class="centerdiv">
 
       <div>
         <center>
+          
         <form method="post" action="{% url 'register' %}">
+          <h2>user register</h2>
             {% csrf_token %}
             {{f.as_p}}
             <input type="submit">
         </form>
+        <br>
+        <a href="{% url 'log' %}">Already have an account?</a>
       </center>
+    </div>
+    
     </div>
     </div>
 </body>

@@ -4,24 +4,49 @@
 <html>
 
 <head>
-  <style>
-    
-  </style>
+  <style>.centerdiv{
+    width: 350px;
+    /* height: 400px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: red;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(27deg, #013A6B 50%, #004E95 50%);
+    box-shado/w: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+   }
+   
+   h2{
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 2em;
+    /* word-spacing: 10px; */
+    margin-top: -50px;
+    /* margin-bottom: 50px;/ */
+    text-shadow: -2px 2px 1px #0A84C6;
+   }
+   </style>
 </head>
 
 <body>
-    <div class="abcd" style="background-image:url('{% static '' %}');">
+    <div class="abcd" style="background-image:url('{% static 'images/img2.jpg' %}');">
 
-      <div>
-        <center>
+      <div class="centerdiv">
+        <h2>user login</h2>
+
         <form method="post" action="{% url 'log' %}">
+          <center>
             {% csrf_token %}
             {{f1.as_p}}
             <input type="submit">
+            <br>
+
+            <a href="{% url 'register' %}">SIGN UP? </h1>
+            </center>
         </form>
-      </center>
-    </div>
-    </div>
+
+    </div></div>
 </body>
 
 </html>
