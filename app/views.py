@@ -122,3 +122,4 @@ def cart_delete(request,product_id):
 def pay(request,t):
     return render(request,'payment.html',{'t':t})
 
+

@@ -57,3 +57,4 @@ class item(models.Model):
     
     def total(self):
         return self.prodt.price*self.quan
+
